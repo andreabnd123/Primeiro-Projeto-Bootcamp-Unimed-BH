@@ -1,0 +1,104 @@
+Inicializar um recurso git:
+$ git init
+
+Visualizar
+Exibir os arquivos que foram modificados:
+$ git status
+
+Exibir como modificações realizadas:
+$ git diff [--name-only]
+
+Exibir lista dos commits já realizados:
+$ git log [--stat] [--graph] [--author="Autor"] [--decorate]
+
+Exibir árvore de branches e commits:
+$ git log --graph --pretty=oneline --abbrev-commit
+
+Exibir log resumido dos commits, quantidade de commits e quais foram os commits:
+$ git shortlog [-sn]
+
+Exibir detalhes de um commit:
+$ git show hash_do_commit
+
+Adicionando e fazendo commit
+Adicionar todos os arquivos os modificados para serem enviados no commit:
+$ git add .
+
+Realizar commit com descrição do que foi modificado:
+$ git commit -m "Descrição das modificações"
+
+Realizar commit já adicionando todos os arquivos modificados, que já foram adicionados alguma vez, e enviando uma mensagem:
+$ git commit -am "Descrição das modificações"
+
+Trabalhando com
+Adicionar um controle remoto:
+$ git remote add origin https://github.com/davidalves1/gerador-cnpj.git
+
+Exibir filiais locais e remotas:
+git branch [--list] [-a]
+
+Enviar como cometidos:
+$ git push origin master
+
+Criar tags para versionamento:
+$ git tag -a 1.0.0 -m "Descrição sobre a versão"
+$ git push origin master --tags
+
+Criar um branch e mudar para ele ao mesmo tempo:
+$ git checkout -b nome_do_branch
+
+Enviar a sucursal para o governo remoto
+$ git push origin nome-do-branch
+
+Desfazendo coisas
+Remover arquivo do monitoramento do Git:
+$ git rm --cached arquivoou$ git rm arquivo #(OBS: CUIDADO, este último comando exclui o arquivo do HD também)
+
+Apagar branch ou tag remotos:
+
+$ git tag -d 1.0.0ou $ git branch -d iss42
+$ git push origin :1.0.0ou$ git push origin :iss42
+
+Removedor remoto:
+$ git remote -v| Para controlar os remotos existentes
+$ git remote rm nome_do_remoto
+
+Desfazer mudanças antes de adicionar o arquivo modificado:
+$ git checkout nome_do_arquivo
+
+Desfazer mudanças após o arquivo ter sido adicionado à fila:
+$ git reset HEAD nome_do_arquivo
+$ git checkout nome_do_arquivo
+
+Desfazer mudanças após ter realizado o commit:
+$ git reset [--soft] [--mixed] [--hard] hash_do_commit_anterior_ao_que_se_quer_excluir
+
+Onde:
+
+--soft: apaga o commit mas deixa os arquivos na fila para confirmar novamente;
+
+--mixed: apaga o commit e retira os arquivos da fila para serem comprometidos;
+
+--hard: apaga o commit e as alterações nos arquivos;
+
+Reverter o que foi enviado. Este comando não apaga o commit, ele faz um novo commit desfazendo o que foi feito no commit escolhido. Usado para salvar sua sexta. :)
+
+$ git revert hash_do_commit_a_ser_revertido
+
+Alterando configurações
+Criar um alias para algum comando:
+$ git config --global alias.nome_do_alias comando
+
+# Meus alias pessoais
+$ git config --global alias.cm commit
+$ git config --global alias.ck checkout
+$ git config --global alias.st status
+$ git config --global alias.ps push
+$ git config --global alias.pl pull
+$ git config --global alias.br branch
+Alterar nome e e-mail do usuário:
+$ git config --global user.name "Seu Nome"
+$ git config --global user.email "seu@email.com"
+
+Exibir todas as configurações
+$ git config --list
